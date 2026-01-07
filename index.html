@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
     <title>تحلیل جامع درخت پوشای مینیمم (MST) | Comprehensive Analysis of MST</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
     <link href="styles/vazirmatn.css" rel="stylesheet" type="text/css" />
     <link href="styles/roboto.css" rel="stylesheet">
     <script src="libs/html2pdf.bundle.min.js"></script>
@@ -1146,6 +1149,15 @@ def prim(n, adj):
             output += (lang === 'fa' ? "مجموع وزن: " : "Total Weight: ") + totalWeight;
 
             document.getElementById('execution-output').innerText = output;
+        }
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
         }
     </script>
 </body>
